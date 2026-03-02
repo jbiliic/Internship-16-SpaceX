@@ -1,10 +1,12 @@
 import {routes} from './constants/routes.ts'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { MainPage } from './pages/mainPage/MainPage.tsx'
+import { NavBar } from './components/navBar/NavBar.tsx'
 export const Router = () => {
   return (
     <>
         <BrowserRouter>
+        <NavBar />
             <Routes>
                 <Route path={routes.HOME} element={<MainPage />} />
                 <Route path={routes.LAUNCH} element={<div>Launch</div>} />
