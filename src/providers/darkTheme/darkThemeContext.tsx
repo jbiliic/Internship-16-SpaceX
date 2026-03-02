@@ -8,14 +8,10 @@ interface DarkThemeContextType {
 export const DarkThemeContext = createContext<DarkThemeContextType | undefined>(undefined);
 
 export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
-
-    useEffect(() => {
+    const [isDarkTheme, setIsDarkTheme] = useState<boolean>(() => {
         const storedTheme = localStorage.getItem('isDarkTheme');
-        if (storedTheme) {
-            setIsDarkTheme(storedTheme === 'true');
-        }
-    }, []);
+        return storedTheme === 'true';
+    });
 
     useEffect(() => {
         localStorage.setItem('isDarkTheme', String(isDarkTheme));

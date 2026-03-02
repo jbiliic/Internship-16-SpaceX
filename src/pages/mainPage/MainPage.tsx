@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { CountdownWithLoading } from "../../components/countdown/Countdown";
 import styles from './MainPage.module.css'
 import spaceVideo from '../../assets/spaceBack.mp4';
+import {routes} from "../../constants/routes.ts";
 export const MainPage = () => {
   const { companyData, companyError, companyLoading   } = useFetchCompany();
   const { nextLaunchTime, nextLaunchTimeError, nextLaunchTimeLoading } = useFetchNextLaunchTime();
@@ -28,8 +29,8 @@ export const MainPage = () => {
         </div>
       )}
       <div className={styles.buttonContainer}>
-        <button onClick={() => navigate('/launch')} className={styles.navButton}>Launches</button>
-        <button onClick={() => navigate('/ship')} className={styles.navButton}>Ships</button>
+        <button onClick={() => navigate(routes.LAUNCH)} className={styles.navButton}>Launches</button>
+        <button onClick={() => navigate(routes.SHIP)} className={styles.navButton}>Ships</button>
       </div>
     </div>
   )
