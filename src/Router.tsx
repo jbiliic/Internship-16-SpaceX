@@ -1,11 +1,12 @@
 import {routes} from './constants/routes.ts'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { MainPage } from './pages/mainPage/MainPage.tsx'
 export const Router = () => {
   return (
     <>
         <BrowserRouter>
             <Routes>
-                <Route path={routes.HOME} element={<div>Home</div>} />
+                <Route path={routes.HOME} element={<MainPage />} />
                 <Route path={routes.LAUNCH} element={<div>Launch</div>} />
                 <Route path={routes.SHIP} element={<div>Ship</div>} />
                 <Route path={routes.LAUNCH_DETAILS} element={<div>Launch Details</div>} />
