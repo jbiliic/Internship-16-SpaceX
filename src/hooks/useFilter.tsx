@@ -1,9 +1,14 @@
 import { useState, useMemo, useEffect } from "react";
-import { useDebounce } from 'use-debounce'; 
+import { useSearchParams } from "react-router-dom";
+import { useDebounce } from 'use-debounce';
 
-export const useFilteredObjects= <T extends { name: string; success?: boolean; upcoming?: boolean }>(objects: T[],needsFiltering?: boolean) => {
-    const [searchQuery, setSearchQuery] = useState("");
-    const [isSuccessful,setIsSuccessful] = useState<boolean | null>(null);
+export const useFilteredObjects = <T extends
+    { name: string; success?: boolean; upcoming?: boolean }>
+    (objects: T[], needsFiltering?: boolean) => {
+
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchQuery, setSearchQuery] = useState<string>("");
+    const [isSuccessful, setIsSuccessful] = useState<boolean | null>(null);
     const [isUpcoming, setIsUpcoming] = useState<boolean | null>(null);
     const [debouncedSearch] = useDebounce(searchQuery, 300);
     const [isFiltering, setIsFiltering] = useState(false);
@@ -16,6 +21,16 @@ export const useFilteredObjects= <T extends { name: string; success?: boolean; u
         }
     }, [searchQuery, debouncedSearch]);
 
+    useEffect(() => {
+        const params = new URLSearchParams(searchParams);
+        if (debouncedSearch) {
+            params.set("search", debouncedSearch);
+        } else {
+            params.delete("search");
+        }
+        setSearchParams(params, { replace: true });
+    }, [debouncedSearch, setSearchParams]);
+
     const filteredObjects = useMemo(() => {
         if (!objects) return [];
         const filtered = objects
@@ -26,16 +41,16 @@ export const useFilteredObjects= <T extends { name: string; success?: boolean; u
                 return matchesSearch;
             })
 
-        if(!needsFiltering) return filtered;
+        if (!needsFiltering) return filtered;
 
         return filtered.filter(obj => {
-            if(isSuccessful === null) return true;
+            if (isSuccessful === null) return true;
             return obj.success === isSuccessful;
 
-            }).filter(obj => {
-                if(isUpcoming === null) return true;
-                return obj.upcoming === isUpcoming;
-            });
+        }).filter(obj => {
+            if (isUpcoming === null) return true;
+            return obj.upcoming === isUpcoming;
+        });
 
     }, [objects, debouncedSearch, isSuccessful, isUpcoming]);
 

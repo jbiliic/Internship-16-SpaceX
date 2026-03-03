@@ -1,0 +1,51 @@
+.landingPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.searchBarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;    /* Keeps the search bar from getting too wide */
+  margin: 0 auto 4rem auto; /* THE FIX: 'auto' on left/right centers it */
+  padding: 2rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+}
+.filterButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.landingsList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1rem; 
+  width: 100%;
+  margin-bottom: 3rem;
+  justify-items: center; 
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem auto; /* Centers the pagination area */
+}
+
+@media (max-width: 768px) {
+  .filterButtons {
+    flex-direction: column;
+  }
+}

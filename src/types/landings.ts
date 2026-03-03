@@ -4,15 +4,17 @@ export interface Landing {
     description: string;
     imageUrl: string;
     videoUrl: string;
-    isSuccessful: boolean;
+    success: boolean;
     rocketId: string;
+    upcoming?: boolean;
 }
 export const mapLanding = (data: any): Landing => ({
     name: data.name,
     date: data.date_utc,
     description: data.details || 'No description available.',
-    imageUrl: data.docs.links.patch.large || '',
-    videoUrl: data.docs.webcast || '',
-    isSuccessful: data.success,
+    imageUrl: data.links.patch.large || '',
+    videoUrl: data.links.webcast || '',
+    success: data.success,
     rocketId: data.rocket,
+    upcoming: data.upcoming,
 });

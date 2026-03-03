@@ -1,21 +1,22 @@
-import {routes} from './constants/routes.ts'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { routes } from './constants/routes.ts'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { MainPage } from './pages/mainPage/MainPage.tsx'
 import { NavBar } from './components/navBar/NavBar.tsx'
+import { LandingPage } from './pages/landingPage/LandingPage.tsx'
 export const Router = () => {
   return (
     <>
-        <BrowserRouter>
+      <BrowserRouter>
         <NavBar />
-            <Routes>
-                <Route path={routes.HOME} element={<MainPage />} />
-                <Route path={routes.LAUNCH} element={<div>Launch</div>} />
-                <Route path={routes.SHIP} element={<div>Ship</div>} />
-                <Route path={routes.LAUNCH_DETAILS} element={<div>Launch Details</div>} />
-                <Route path={routes.SHIP_DETAILS} element={<div>Ship Details</div>} />
-                <Route path={routes.NOT_FOUND} element={<div>Not Found</div>} />
-            </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route path={routes.HOME} element={<MainPage />} />
+          <Route path={routes.LAUNCH} element={<LandingPage />} />
+          <Route path={routes.SHIP} element={<div>Ship</div>} />
+          <Route path={routes.LAUNCH_DETAILS} element={<div>Launch Details</div>} />
+          <Route path={routes.SHIP_DETAILS} element={<div>Ship Details</div>} />
+          <Route path={routes.NOT_FOUND} element={<div>Not Found</div>} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
