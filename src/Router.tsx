@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { MainPage } from './pages/mainPage/MainPage.tsx'
 import { NavBar } from './components/navBar/NavBar.tsx'
 import { LandingPage } from './pages/landingPage/LandingPage.tsx'
+import { LandingDetailsPage } from './pages/landingDetails/LandingDetailsPage.tsx'
 export const Router = () => {
   return (
     <>
@@ -12,7 +13,7 @@ export const Router = () => {
           <Route path={routes.HOME} element={<MainPage />} />
           <Route path={routes.LAUNCH} element={<LandingPage />} />
           <Route path={routes.SHIP} element={<div>Ship</div>} />
-          <Route path={routes.LAUNCH_DETAILS} element={<div>Launch Details</div>} />
+          <Route path={routes.LAUNCH_DETAILS} element={<LandingDetailsPage />} />
           <Route path={routes.SHIP_DETAILS} element={<div>Ship Details</div>} />
           <Route path={routes.NOT_FOUND} element={<div>Not Found</div>} />
         </Routes>

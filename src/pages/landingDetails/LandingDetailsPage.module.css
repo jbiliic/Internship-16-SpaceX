@@ -1,0 +1,137 @@
+.pageWrapper {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav {
+  max-width: 1100px;
+  margin: 0 auto 2rem auto;
+}
+
+.backBtn {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--accent-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.backBtn:hover {
+  background: var(--accent-color);
+  color: white;
+}
+
+.mainContent {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 3rem;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 2rem;
+}
+
+.missionLabel {
+  color: var(--accent-color);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+  color: var(--text-main);
+}
+
+.description {
+  max-width: 800px;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.glassPanel {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glassPanel h3 {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 0.9rem;
+}
+
+.accent { 
+  color: var(--accent-color); 
+  font-weight: bold; 
+}
+
+.active { color: #00ff88; }
+.retired { color: #ff4444; }
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mediaLink {
+  display: block;
+  padding: 1rem;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.mediaLink:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.galleryImg {
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: 8px;
+  opacity: 0.9;
+  border: 1px solid var(--glass-border);
+}
+
+@media (max-width: 800px) {
+  .detailsGrid { grid-template-columns: 1fr; }
+  .header h1 { font-size: 2rem; }
+}

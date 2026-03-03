@@ -1,4 +1,5 @@
 export interface Landing {
+    id: string;
     name: string;
     date: string;
     description: string;
@@ -9,6 +10,7 @@ export interface Landing {
     upcoming?: boolean;
 }
 export const mapLanding = (data: any): Landing => ({
+    id: data.id,
     name: data.name,
     date: data.date_utc,
     description: data.details || 'No description available.',

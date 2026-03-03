@@ -6,10 +6,11 @@ interface CardProps {
     date: string;
     imgUrl: string;
     isSuccessful: boolean;
+    onClick?: () => void;
 }
 export const Card = (props: CardProps) => {
     return (
-        <div className={style.card}>
+        <div className={style.card} onClick={props.onClick}>
             <div className={style.cardImageContainer}>
                 <img src={props.imgUrl} alt={props.name} className={style.cardImage} />
             </div>
