@@ -14,8 +14,8 @@
   align-items: center;
   gap: 1.5rem;
   width: 100%;
-  max-width: 800px;    /* Keeps the search bar from getting too wide */
-  margin: 0 auto 4rem auto; /* THE FIX: 'auto' on left/right centers it */
+  max-width: 800px;  
+  margin: 0 auto 4rem auto; 
   padding: 2rem;
   background: var(--card-bg);
   backdrop-filter: blur(12px);
@@ -41,7 +41,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 2rem auto; /* Centers the pagination area */
+  margin: 2rem auto; 
 }
 
 @media (max-width: 768px) {

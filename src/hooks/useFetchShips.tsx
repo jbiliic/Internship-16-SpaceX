@@ -1,5 +1,5 @@
-import type { Ship } from '../types/ship';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { mapShip, type Ship } from '../types/ship';
+import { useEffect, useRef, useState } from 'react';
 import { useIsAtBottom } from './useIsAtBottom';
 import client from '../api/client.ts';
 import { useSearchParams } from 'react-router-dom';
@@ -30,43 +30,50 @@ export const useFetchShips = () => {
         setShips([]);
         setCurrentPage(1);
         setHasMore(true);
-    }, [debouncedSearch]);
+    }, [debouncedSearch, setSearchParams]);
 
-    const fetchShips = useCallback(async (pageToFetch: number) => {
-        if (shipLoading) return;
-        setShipLoading(true);
+    useEffect(() => {
+        let isCurrentRequest = true;
 
-        const [res, err] = await client.post('ships/query', {
-            options: {
-                page: pageToFetch,
-                limit: 10,
-            },
-            query: {
-                name: {
-                    $regex: debouncedSearch || '',
-                    $options: 'i'
+        const performFetch = async () => {
+            setShipLoading(true);
+            const [res, err] = await client.post('/ships/query', {
+                options: {
+                    page: currentPage,
+                    limit: 10,
+                },
+                query: {
+                    name: {
+                        $regex: debouncedSearch || '',
+                        $options: 'i'
+                    }
                 }
+            });
+
+            if (!isCurrentRequest) return;
+
+            if (err) {
+                setShipError(err);
+            } else if (res) {
+                const mappedShips = res.docs.map(mapShip);
+                setShips(prev => currentPage === 1 ? mappedShips : [...prev, ...mappedShips]);
+                setHasMore(res.hasNextPage);
             }
-        });
+            setShipLoading(false);
+        };
 
-        if (err) {
-            setShipError(err);
-        } else if (res) {
-            setShips(prev => pageToFetch === 1 ? res.docs : [...prev, ...res.docs]);
-            setHasMore(res.hasNextPage);
-        }
-        setShipLoading(false);
-    }, [debouncedSearch]);
+        performFetch();
 
-    useEffect(() => {
-        fetchShips(currentPage);
-    }, [currentPage, fetchShips]);
+        return () => {
+            isCurrentRequest = false;
+        };
+    }, [currentPage, debouncedSearch]);
 
     useEffect(() => {
-        if (isAtBottom && !shipLoading && hasMore) {
+        if (isAtBottom && !shipLoading && hasMore && ships.length >= 10) {
             setCurrentPage(prev => prev + 1);
         }
-    }, [isAtBottom, shipLoading, hasMore]);
+    }, [isAtBottom, shipLoading, hasMore, ships.length]);
 
-    return { ships, shipError, shipLoading, searchQuery, setSearchQuery, ref };
+    return { ships, shipError, shipLoading, searchQuery, setSearchQuery, ref, hasMore };
 };

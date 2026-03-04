@@ -3,9 +3,9 @@ import style from './Card.module.css'
 
 interface CardProps {
     name: string;
-    date: string;
+    date?: string | null;
     imgUrl: string;
-    isSuccessful: boolean;
+    isSuccessful?: boolean;
     onClick?: () => void;
 }
 export const Card = (props: CardProps) => {
@@ -16,8 +16,12 @@ export const Card = (props: CardProps) => {
             </div>
             <div className={style.cardContent}>
                 <h3>{props.name}</h3>
-                <p>{new Date(props.date).toLocaleDateString()}</p>
-                <p className={props.isSuccessful ? style.successful : style.unsuccessful}>Status: {props.isSuccessful ? "Successful" : "Unsuccessful"}</p>
+                <p>{props.date ? new Date(props.date).toLocaleDateString() : "Date not available"}</p>
+                {props.isSuccessful !== undefined && (
+                    <p className={props.isSuccessful ? style.successful : style.unsuccessful}>
+                        Status: {props.isSuccessful ? "Successful" : "Unsuccessful"}
+                    </p>
+                )}
             </div>
         </div>
     )
