@@ -3,6 +3,7 @@ import { useFetchRocket } from "../../hooks/useFetchRocket";
 import { type Landing } from "../../types/landings.ts";
 import style from './LandingDetailsPage.module.css'
 import LoadingCircle from "../../components/loadingCircle/LoadingCircle.tsx";
+import { routes } from "../../constants/routes.ts";
 
 export const LandingDetailsPage = () => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ export const LandingDetailsPage = () => {
     const landing = location.state?.landingData as Landing;
     const { rocketData, rocketLoading, rocketError } = useFetchRocket(landing?.rocketId || "");
 
-    if (rocketError) return <div className={style.error}>Error loading rocket data: {rocketError}</div>;
+    if (rocketError) navigate(routes.NOT_FOUND, { state: { errorMessage: rocketError } });
     if (!landing) return <div className={style.error}>Mission data not found.</div>;
 
     return (

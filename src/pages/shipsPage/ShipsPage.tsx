@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import styles from './ShipsPage.module.css'
 
 export const ShipsPage = () => {
-    const { ships, shipError, shipLoading, searchQuery, setSearchQuery, ref, hasMore } = useFetchShips();
+    const { ships, shipError, shipLoading, searchQuery, setSearchQuery, ref } = useFetchShips();
     const navigate = useNavigate();
 
     const searchBarFocusRef = useRef<HTMLInputElement>(null);
@@ -24,6 +24,8 @@ export const ShipsPage = () => {
             state: { shipData: ship }
         });
     };
+
+    if (shipError) navigate(routes.NOT_FOUND, { state: { errorMessage: shipError } });
 
     return (
         <div className="page-container">

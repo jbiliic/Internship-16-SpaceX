@@ -1,13 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import type { Ship } from "../../types/ship";
 import styles from './ShipDetailsPage.module.css'
+import { routes } from "../../constants/routes";
 
 export const ShipDetailsPage = () => {
     const location = useLocation();
     const ship = location.state?.shipData as Ship;
     const navigate = useNavigate();
 
-    if (!ship) return <div>Ship data not found.</div>;
+    if (!ship) navigate(routes.NOT_FOUND, { state: { errorMessage: "Ship data not found." } });
 
     return (
         <div className={styles.container}>
