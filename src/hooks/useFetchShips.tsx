@@ -37,6 +37,7 @@ export const useFetchShips = () => {
 
         const performFetch = async () => {
             setShipLoading(true);
+            console.log(`Fetching ships with search: "${debouncedSearch}", page: ${currentPage}`);
             const [res, err] = await client.post('/ships/query', {
                 options: {
                     page: currentPage,
@@ -76,4 +77,4 @@ export const useFetchShips = () => {
     }, [isAtBottom, shipLoading, hasMore, ships.length]);
 
     return { ships, shipError, shipLoading, searchQuery, setSearchQuery, ref, hasMore };
-};
+}; 

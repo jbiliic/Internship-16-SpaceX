@@ -6,31 +6,24 @@
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  /* This clips the rotating light so it only shows as a border */
   overflow: hidden; 
   transition: transform 0.3s ease;
 }
-
-/* THE SPINNER */
 .card::before {
   content: '';
   position: absolute;
-  /* We make this much larger than the card so the corners are always covered */
   width: 150%; 
   height: 150%;
   background-image: linear-gradient(180deg, #00b7ff, #ff30ff);
-  /* Center the spinner */
   top: -25%;
   left: -25%;
   animation: rotBGimg 3s linear infinite;
 }
 
-/* THE SHIELD (This hides the middle of the spinner) */
 .card::after {
   content: '';
   position: absolute;
   background: #07182e;
-  /* Inset creates the border thickness. 4px = 4px border */
   inset: 4px; 
   border-radius: 16px;
 }
@@ -39,8 +32,6 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-/* Ensure all content sits ABOVE the animation layers */
 .cardImageContainer,
 .cardContent {
   z-index: 5; 

@@ -1,0 +1,17 @@
+.shipsList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    min-height: 100vh;
+}
+@media (max-width: 1024px) {
+    .shipsList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .shipsList {
+        grid-template-columns: 1fr;
+    }
+}

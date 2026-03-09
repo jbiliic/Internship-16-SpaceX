@@ -1,0 +1,133 @@
+.container {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.backBtn {
+  align-self: flex-start;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto 30px auto;
+}
+
+.backBtn button {
+  background: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.backBtn button:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 15px var(--accent-color);
+}
+
+.mainContent {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.imgContainer {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.imgContainer h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--text-main);
+  border-left: 4px solid var(--accent-color);
+  padding-left: 15px;
+}
+
+.imgContainer img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.dataSections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.generalInfo, .roles {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid var(--glass-border);
+}
+
+.generalInfo h2, .roles h2 {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 10px;
+}
+
+.generalInfo ul {
+  list-style: none;
+  padding: 0;
+}
+
+.generalInfo li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.generalInfo li span:first-child {
+  color: var(--text-dim);
+}
+
+.statusActive {
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.roles ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.roles li {
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+  }
+}

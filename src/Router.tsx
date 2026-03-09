@@ -5,6 +5,8 @@ import { NavBar } from './components/navBar/NavBar.tsx'
 import { LandingPage } from './pages/landingPage/LandingPage.tsx'
 import { LandingDetailsPage } from './pages/landingDetails/LandingDetailsPage.tsx'
 import { ShipsPage } from './pages/shipsPage/ShipsPage.tsx'
+import { ShipDetailsPage } from './pages/shipDetails/ShipDetailsPage.tsx'
+
 export const Router = () => {
   return (
     <>
@@ -15,7 +17,7 @@ export const Router = () => {
           <Route path={routes.LAUNCH} element={<LandingPage />} />
           <Route path={routes.SHIP} element={<ShipsPage />} />
           <Route path={routes.LAUNCH_DETAILS} element={<LandingDetailsPage />} />
-          <Route path={routes.SHIP_DETAILS} element={<div>Ship Details</div>} />
+          <Route path={routes.SHIP_DETAILS} element={<ShipDetailsPage />} />
           <Route path={routes.NOT_FOUND} element={<div>Not Found</div>} />
         </Routes>
       </BrowserRouter>

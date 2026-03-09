@@ -6,6 +6,7 @@ import { routes } from "../../constants/routes";
 import type { Ship } from "../../types/ship";
 import { useNavigate } from "react-router-dom";
 import styles from './ShipsPage.module.css'
+
 export const ShipsPage = () => {
     const { ships, shipError, shipLoading, searchQuery, setSearchQuery, ref, hasMore } = useFetchShips();
     const navigate = useNavigate();
@@ -30,11 +31,7 @@ export const ShipsPage = () => {
                 <SearchBar ref={searchBarFocusRef} value={searchQuery} onChange={setSearchQuery} />
             </div>
 
-            <div className="ships-list" style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                gap: '20px'
-            }}>
+            <div className={styles.shipsList} >
                 {ships.map((ship) => (
                     <CardWithLoading
                         key={ship.id}
@@ -47,8 +44,6 @@ export const ShipsPage = () => {
                 ))}
             </div>
             <div ref={ref} style={{ height: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                {shipLoading && <p>Loading more ships...</p>}
-                {!hasMore && ships.length > 0 && <p>All ships loaded.</p>}
             </div>
         </div>
     )
