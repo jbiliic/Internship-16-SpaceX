@@ -14,6 +14,7 @@ export const useFetchLandings = (props?: FetchLandingsProps) => {
     const [landingsData, setLandingsData] = useState<Landing[]>([]);
     const [landingsError, setLandingsError] = useState<string | null>(null);
     const [landingsLoading, setLandingsLoading] = useState<boolean>(false);
+    const [hasMore, setHasMore] = useState<boolean>(true);
 
     const fetchLandings = async () => {
         setLandingsLoading(true);
@@ -29,6 +30,7 @@ export const useFetchLandings = (props?: FetchLandingsProps) => {
         } else {
             console.log(res);
             setLandingsData(res.docs.map((data: any) => mapLanding(data)));
+            setHasMore(res.hasNextPage);
         }
         setLandingsLoading(false);
     };
@@ -37,5 +39,5 @@ export const useFetchLandings = (props?: FetchLandingsProps) => {
         fetchLandings();
     }, [currentPage]);
 
-    return { landingsData, landingsError, landingsLoading, currentPage, setCurrentPage };
+    return { landingsData, landingsError, landingsLoading, currentPage, setCurrentPage, hasMore };
 }

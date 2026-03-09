@@ -12,7 +12,7 @@ import { routes } from "../../constants/routes.ts";
 import { NoResults } from "../../components/noResults/NoResults.tsx";
 
 export const LandingPage = () => {
-  const { landingsData, landingsError, landingsLoading, currentPage, setCurrentPage } = useFetchLandings();
+  const { landingsData, landingsError, landingsLoading, currentPage, setCurrentPage, hasMore } = useFetchLandings();
   const { filteredObjects,
     searchQuery,
     setSearchQuery,
@@ -68,6 +68,7 @@ export const LandingPage = () => {
           onPrevious={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           onNext={() => setCurrentPage(prev => prev + 1)}
           currentPage={currentPage}
+          hasMore={hasMore}
         />
       </div>
     </div>
