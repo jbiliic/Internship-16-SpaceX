@@ -6,6 +6,7 @@ import { LandingPage } from './pages/landingPage/LandingPage.tsx'
 import { LandingDetailsPage } from './pages/landingDetails/LandingDetailsPage.tsx'
 import { ShipsPage } from './pages/shipsPage/ShipsPage.tsx'
 import { ShipDetailsPage } from './pages/shipDetails/ShipDetailsPage.tsx'
+import { NotFoundPage } from './pages/404Page/NotFoundPage.tsx'
 
 export const Router = () => {
   return (
@@ -18,7 +19,7 @@ export const Router = () => {
           <Route path={routes.SHIP} element={<ShipsPage />} />
           <Route path={routes.LAUNCH_DETAILS} element={<LandingDetailsPage />} />
           <Route path={routes.SHIP_DETAILS} element={<ShipDetailsPage />} />
-          <Route path={routes.NOT_FOUND} element={<div>Not Found</div>} />
+          <Route path={routes.NOT_FOUND} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>
