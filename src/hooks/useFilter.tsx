@@ -39,7 +39,7 @@ export const useFilteredObjects = <T extends
                     .toLowerCase()
                     .includes(debouncedSearch.toLowerCase().trim());
                 return matchesSearch;
-            })
+            });
 
         if (!needsFiltering) return filtered;
 

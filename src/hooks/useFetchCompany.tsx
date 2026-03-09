@@ -1,15 +1,16 @@
 import client from '../api/client.ts';
 import { useEffect, useState } from 'react';
-import { type Company} from '../types/company.ts';
+import { type Company } from '../types/company.ts';
 import { mapCompany } from '../types/company.ts';
-export const useFetchCompany = () => { 
+
+export const useFetchCompany = () => {
     const [companyData, setCompanyData] = useState<Company | null>(null);
     const [companyError, setCompanyError] = useState<string | null>(null);
     const [companyLoading, setCompanyLoading] = useState<boolean>(false);
 
     const fetchCompanyData = async () => {
         setCompanyLoading(true);
-        const [data, error] = await client.get('/company') ;
+        const [data, error] = await client.get('/company');
         if (error) {
             setCompanyError(error);
             setCompanyData(null);
@@ -22,5 +23,5 @@ export const useFetchCompany = () => {
     useEffect(() => {
         fetchCompanyData();
     }, []);
-    return { companyData, companyError, companyLoading };  
+    return { companyData, companyError, companyLoading };
 }

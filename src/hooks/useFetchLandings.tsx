@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import client from '../api/client.ts';
 import type { Landing } from '../types/landings.ts';
 import { mapLanding } from "../types/landings.ts";
+
 interface FetchLandingsProps {
     page?: number;
 }
