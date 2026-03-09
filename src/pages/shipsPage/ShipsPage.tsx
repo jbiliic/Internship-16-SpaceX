@@ -6,6 +6,7 @@ import { routes } from "../../constants/routes";
 import type { Ship } from "../../types/ship";
 import { useNavigate } from "react-router-dom";
 import styles from './ShipsPage.module.css'
+import { NoResults } from "../../components/noResults/NoResults";
 
 export const ShipsPage = () => {
     const { ships, shipError, shipLoading, searchQuery, setSearchQuery, ref } = useFetchShips();
@@ -34,16 +35,19 @@ export const ShipsPage = () => {
             </div>
 
             <div className={styles.shipsList} >
-                {ships.map((ship) => (
-                    <CardWithLoading
-                        key={ship.id}
-                        name={ship.name}
-                        date={ship.yearBuilt?.toString() ?? "Unknown"}
-                        imgUrl={ship.imageUrl || "https://placehold.co/600x400?text=No+Image"}
-                        isLoading={false}
-                        onClick={() => handleCardClick(ship)}
-                    />
-                ))}
+                {ships.length === 0 ? (
+                    <NoResults />
+                ) : (
+                    ships.map((ship) => (
+                        <CardWithLoading
+                            key={ship.id}
+                            name={ship.name}
+                            date={ship.yearBuilt?.toString() ?? "Unknown"}
+                            imgUrl={ship.imageUrl || "https://placehold.co/600x400?text=No+Image"}
+                            isLoading={false}
+                            onClick={() => handleCardClick(ship)}
+                        />
+                    )))}
             </div>
             <div ref={ref} style={{ height: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             </div>

@@ -45,7 +45,7 @@ export const useFetchShips = () => {
                 },
                 query: {
                     name: {
-                        $regex: debouncedSearch || '',
+                        $regex: debouncedSearch.trim() || '',
                         $options: 'i'
                     }
                 }

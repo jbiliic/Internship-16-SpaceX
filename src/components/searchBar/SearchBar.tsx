@@ -8,6 +8,6 @@ interface SearchBarProps {
 
 export const SearchBar = (props: SearchBarProps) => {
     return (
-        <input className={style.searchInput} type="text" placeholder="Search..." ref={props.ref} value={props.value} onChange={(e) => props.onChange(e.target.value)} />
+        <input className={style.searchInput} type="search" placeholder="Search..." ref={props.ref} value={props.value} onChange={(e) => props.onChange(e.target.value)} />
     )
 }

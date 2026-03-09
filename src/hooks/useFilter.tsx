@@ -37,7 +37,7 @@ export const useFilteredObjects = <T extends
             .filter((obj) => {
                 const matchesSearch = obj.name
                     .toLowerCase()
-                    .includes(debouncedSearch.toLowerCase());
+                    .includes(debouncedSearch.toLowerCase().trim());
                 return matchesSearch;
             })
 

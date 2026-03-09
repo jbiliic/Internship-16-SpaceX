@@ -9,6 +9,7 @@ import style from './LandingPage.module.css'
 import { useNavigate } from "react-router-dom";
 import type { Landing } from "../../types/landings.ts";
 import { routes } from "../../constants/routes.ts";
+import { NoResults } from "../../components/noResults/NoResults.tsx";
 
 export const LandingPage = () => {
   const { landingsData, landingsError, landingsLoading, currentPage, setCurrentPage } = useFetchLandings();
@@ -47,17 +48,20 @@ export const LandingPage = () => {
         </div>
       </div>
       <div className={style.landingsList}>
-        {!isFiltering && filteredObjects.map((landing) => (
-          <CardWithLoading
-            key={landing.id}
-            name={landing.name}
-            date={landing.date}
-            imgUrl={landing.imageUrl}
-            isSuccessful={landing.success}
-            isLoading={landingsLoading}
-            onClick={() => handleCardClick(landing)}
-          />
-        ))}
+        {!isFiltering && (filteredObjects.length === 0 ? (
+          <NoResults />
+        ) : (
+          filteredObjects.map((landing) => (
+            <CardWithLoading
+              key={landing.id}
+              name={landing.name}
+              date={landing.date}
+              imgUrl={landing.imageUrl}
+              isSuccessful={landing.success}
+              isLoading={landingsLoading}
+              onClick={() => handleCardClick(landing)}
+            />
+          ))))}
       </div>
       <div className={style.paginationContainer}>
         <PaginationBtns

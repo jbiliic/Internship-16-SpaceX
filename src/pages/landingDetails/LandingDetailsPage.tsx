@@ -12,7 +12,7 @@ export const LandingDetailsPage = () => {
     const { rocketData, rocketLoading, rocketError } = useFetchRocket(landing?.rocketId || "");
 
     if (rocketError) navigate(routes.ERROR, { state: { errorMessage: rocketError } });
-    if (!landing) return <div className={style.error}>Mission data not found.</div>;
+    if (!landing) navigate(routes.NOT_FOUND);
 
     return (
         <div className={style.pageWrapper}>

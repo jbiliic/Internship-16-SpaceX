@@ -2,7 +2,6 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import type { Ship } from "../../types/ship";
 import styles from './ShipDetailsPage.module.css'
 import { routes } from "../../constants/routes";
-import { useEffect } from "react";
 
 export const ShipDetailsPage = () => {
     const location = useLocation();
