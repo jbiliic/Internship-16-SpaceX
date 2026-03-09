@@ -25,7 +25,7 @@ export const ShipsPage = () => {
         });
     };
 
-    if (shipError) navigate(routes.NOT_FOUND, { state: { errorMessage: shipError } });
+    if (shipError) navigate(routes.ERROR, { state: { errorMessage: shipError } });
 
     return (
         <div className="page-container">

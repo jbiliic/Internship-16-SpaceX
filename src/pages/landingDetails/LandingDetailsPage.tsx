@@ -11,7 +11,7 @@ export const LandingDetailsPage = () => {
     const landing = location.state?.landingData as Landing;
     const { rocketData, rocketLoading, rocketError } = useFetchRocket(landing?.rocketId || "");
 
-    if (rocketError) navigate(routes.NOT_FOUND, { state: { errorMessage: rocketError } });
+    if (rocketError) navigate(routes.ERROR, { state: { errorMessage: rocketError } });
     if (!landing) return <div className={style.error}>Mission data not found.</div>;
 
     return (

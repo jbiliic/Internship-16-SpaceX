@@ -34,7 +34,7 @@ export const LandingPage = () => {
     }
   }, [landingsLoading, landingsError]);
 
-  if (landingsError) return <div>Error: {landingsError}</div>;
+  if (landingsError) navigate(routes.ERROR, { state: { errorMessage: landingsError } });
 
   return (
     <div className={style.landingPage}>

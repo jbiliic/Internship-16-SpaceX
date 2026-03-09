@@ -5,4 +5,5 @@ export const routes = {
   LAUNCH_DETAILS: '/launch/:id',
   SHIP_DETAILS: '/ship/:id',
   NOT_FOUND: '*',
+  ERROR: '/error'
 }

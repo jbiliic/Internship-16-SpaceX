@@ -1,14 +1,24 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import type { Ship } from "../../types/ship";
 import styles from './ShipDetailsPage.module.css'
 import { routes } from "../../constants/routes";
+import { useEffect } from "react";
 
 export const ShipDetailsPage = () => {
     const location = useLocation();
     const ship = location.state?.shipData as Ship;
     const navigate = useNavigate();
+    console.log("Ship data in details page:", ship);
 
-    if (!ship) navigate(routes.NOT_FOUND, { state: { errorMessage: "Ship data not found." } });
+    if (!ship || typeof ship !== 'object' || !ship.id) {
+        return (
+            <Navigate
+                to={routes.ERROR}
+                state={{ errorMessage: "Ship data not found or session expired." }}
+                replace
+            />
+        );
+    }
 
     return (
         <div className={styles.container}>

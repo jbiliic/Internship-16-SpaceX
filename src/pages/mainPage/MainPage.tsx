@@ -12,7 +12,7 @@ export const MainPage = () => {
   const { nextLaunchTime, nextLaunchTimeError, nextLaunchTimeLoading } = useFetchNextLaunchTime();
   const navigate = useNavigate();
 
-  if (companyError || nextLaunchTimeError) navigate(routes.NOT_FOUND, { state: { errorMessage: companyError || nextLaunchTimeError } });
+  if (companyError || nextLaunchTimeError) navigate(routes.ERROR, { state: { errorMessage: companyError || nextLaunchTimeError } });
 
   return (
     <div className={styles.mainPage}>
